@@ -108,6 +108,23 @@
 
     /* acc: foco */
     :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
+	
+	input, textarea{
+      background: var(--input-bg);
+      color: var(--input-fg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: 15px;
+      width: 100%;
+    }
+    input::placeholder, textarea::placeholder{
+      color: var(--placeholder);
+    }
+    input:focus, textarea:focus{
+      outline: 2px solid var(--accent);
+      border-color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -274,7 +291,7 @@
       <div class="wrap">
         <h2>Contacto</h2>
         <div class="grid cols-2">
-          <form class="tile" method="post" action="https://formspree.io/f/mrblvbvr" style="display:grid;gap:10px">
+          <form class="tile" method="post" action="https://formspree.io/f/mrblvbvr" style="display:grid;gap:14px">
             <label>Nombre<br><input name="nombre" required class="btn" style="width:100%" placeholder="Tu nombre"/></label>
             <label>Email<br><input name="email" type="email" required class="btn" style="width:100%" placeholder="tunombre@dominio.com"/></label>
             <label>Mensaje<br><textarea name="mensaje" rows="5" required class="btn" style="width:100%" placeholder="Cuéntame tu proyecto"></textarea></label>
