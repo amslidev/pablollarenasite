@@ -3,160 +3,308 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pablo Llarena | Landing</title>
-  <meta name="description" content="Bienvenido al sitio web de Pablo Llarena" />
+  <title>Pablo Llarena | Ingeniería en Sistemas</title>
+  <meta name="description" content="Portafolio de Pablo Llarena: ingeniería en sistemas, desarrollo de software y arquitectura de infraestructura." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- SEO básico / Open Graph -->
+  <meta property="og:title" content="Pablo Llarena | Ingeniería en Sistemas" />
+  <meta property="og:description" content="Desarrollo, infraestructura y automatización." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/img/cover.jpg" />
+  <meta name="theme-color" content="#0b1220" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Datos estructurados mínimos -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pablo Llarena",
+    "jobTitle": "Ingeniero en Sistemas",
+    "url": "https://pablollarena.site/",
+    "sameAs": [
+      "https://github.com/tu-usuario",
+      "https://www.linkedin.com/in/tu-perfil"
+    ]
+  }
+  </script>
+
   <style>
     :root{
-      --bg: #0b1220;
-      --fg: #e6edf3;
-      --muted: #9fb0c3;
-      --accent: #5cc8ff;
+      --bg: #0b1220;   /* fondo dark */
+      --fg: #e6edf3;   /* texto */
+      --muted: #9fb0c3;/* texto secundario */
+      --accent: #5cc8ff; /* acento */
       --glass: rgba(255,255,255,0.06);
       --border: rgba(255,255,255,0.12);
+      --card: rgba(255,255,255,0.04);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
       color:var(--fg);
       background:
-        radial-gradient(1000px 600px at 80% -10%, rgba(92,200,255,0.15), transparent 60%),
-        radial-gradient(800px 500px at -10% 90%, rgba(120,96,255,0.18), transparent 60%),
+        radial-gradient(1000px 600px at 80% -10%, rgba(92,200,255,0.12), transparent 60%),
+        radial-gradient(800px 500px at -10% 90%, rgba(120,96,255,0.15), transparent 60%),
         var(--bg);
-      display:flex;align-items:center;justify-content:center;
       min-height:100svh;
     }
-    .wrap{padding:24px;width:min(1080px,100%)}
+    a{color:var(--fg); text-decoration:none}
+    .wrap{padding-inline:20px;max-width:1120px;margin-inline:auto}
+    header{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter:saturate(140%) blur(8px);
+      background:linear-gradient(to bottom, rgba(5,10,20,0.7), rgba(5,10,20,0.2));
+      border-bottom:1px solid var(--border);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+    .brand{font-weight:800;letter-spacing:-0.02em}
+    .menu{display:flex;gap:16px;align-items:center}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card)}
+    .btn.primary{background:var(--accent); color:#0b1220; border-color:rgba(0,0,0,0.06); font-weight:600}
+    .btn:hover{filter:brightness(1.05)}
+
+    /* HERO */
+    .hero{padding:56px 0 24px}
     .card{
-      backdrop-filter:saturate(140%) blur(10px);
-      background:var(--glass);
-      border:1px solid var(--border);
-      border-radius:24px;
-      padding:clamp(20px, 4vw, 44px);
-      display:grid;
-      grid-template-columns:1fr;
-      gap:28px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+      background:var(--glass); border:1px solid var(--border); border-radius:24px;
+      display:grid; gap:28px; padding:clamp(20px, 4vw, 44px); box-shadow:0 10px 30px rgba(0,0,0,0.25);
     }
-    @media (min-width:800px){
-      .card{grid-template-columns:1.1fr 1fr;align-items:center}
-    }
-    h1{
-      margin:0 0 10px 0;
-      font-size:clamp(26px, 5vw, 44px);
-      line-height:1.1;
-      letter-spacing:-0.02em;
-    }
-    p{margin:0;color:var(--muted);font-size:clamp(16px, 1.6vw, 18px)}
-    .cta{margin-top:16px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--bg);background:var(--accent);padding:12px 18px;border-radius:14px;font-weight:600;border:1px solid rgba(0,0,0,0.06)}
-    .cta:hover{filter:brightness(1.05)}
+    @media (min-width:900px){ .card{ grid-template-columns:1.1fr 1fr; align-items:center } }
+    h1{margin:0 0 10px; font-size:clamp(28px, 5vw, 48px); line-height:1.1; letter-spacing:-0.02em}
+    p.lead{margin:0; color:var(--muted); font-size:clamp(16px, 1.6vw, 18px)}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
 
     .hero-illustration{width:100%;height:auto;max-width:600px;margin-inline:auto;display:block}
-
-    /* Subtle animated glow */
-    .glow{position:absolute;inset:auto;background:radial-gradient(closest-side, rgba(92,200,255,0.18), transparent 70%);filter:blur(20px);width:220px;height:220px;border-radius:999px;animation:float 8s ease-in-out infinite;}
+    .glow{position:absolute;inset:auto;background:radial-gradient(closest-side, rgba(92,200,255,0.18), transparent 70%);filter:blur(20px);width:220px;height:220px;border-radius:999px;animation:float 8s ease-in-out infinite}
     .glow.a{top:-40px;left:-40px}
     .glow.b{bottom:-40px;right:-40px;animation-delay:1.5s}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-
     .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+    /* SECCIONES */
+    section{scroll-margin-top:80px}
+    .section{padding:56px 0}
+    .section h2{margin:0 0 12px; font-size:clamp(22px,4vw,32px)}
+    .muted{color:var(--muted)}
+
+    .grid{display:grid; gap:16px}
+    @media(min-width:720px){ .grid.cols-3{ grid-template-columns:repeat(3,1fr) } }
+    @media(min-width:720px){ .grid.cols-2{ grid-template-columns:repeat(2,1fr) } }
+
+    .tile{background:var(--card); border:1px solid var(--border); border-radius:16px; padding:18px}
+    .tile h3{margin:0 0 6px; font-size:18px}
+    .stack{display:flex;flex-wrap:wrap; gap:10px}
+    .chip{border:1px solid var(--border); background:rgba(255,255,255,0.03); padding:6px 10px; border-radius:999px; font-size:14px}
+
+    footer{border-top:1px solid var(--border); padding:28px 0; color:var(--muted); font-size:14px}
+    .social{display:flex; gap:14px; align-items:center}
+    .inline-icon{width:18px;height:18px;vertical-align:-3px}
+
+    /* acc: foco */
+    :focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <main class="card" role="main">
-      <section>
-        <h1>Bienvenido al sitio web de Pablo Llarena</h1>
-        <p>Desarrollo, infraestructura y esas deliciosas capas de software donde ocurre la magia.
-        </p>
-        <!-- Botón opcional; puedes eliminarlo si no lo necesitas -->
-      </section>
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Pablo Llarena</div>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#sobre-mi" class="btn">Sobre mí</a>
+        <a href="#habilidades" class="btn">Habilidades</a>
+        <a href="#proyectos" class="btn">Proyectos</a>
+        <a href="#contacto" class="btn primary">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
-      <!-- Ilustración inline (imagen relacionada a TI) -->
-      <figure aria-labelledby="caption" style="position:relative">
-        <div class="glow a" aria-hidden="true"></div>
-        <div class="glow b" aria-hidden="true"></div>
-        <svg class="hero-illustration" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-describedby="desc">
-          <title id="desc">Ilustración de un chip y servidores conectados (tecnología de la información)</title>
-          <defs>
-            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="#5cc8ff"/>
-              <stop offset="100%" stop-color="#7860ff"/>
-            </linearGradient>
-            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
-            </filter>
-          </defs>
-
-          <!-- Placa base -->
-          <rect x="40" y="60" width="640" height="400" rx="22" fill="#0f1a2d" stroke="rgba(255,255,255,0.12)" filter="url(#shadow)" />
-
-          <!-- Pistas -->
-          <g stroke="#2a3a56" stroke-width="6" stroke-linecap="round" opacity="0.8">
-            <path d="M120 180 H360 V130 H600"/>
-            <path d="M120 220 H340 V260 H620"/>
-            <path d="M120 300 H260 V220 H520"/>
-            <path d="M120 340 H220 V360 H520"/>
-          </g>
-
-          <!-- Chip central -->
-          <g transform="translate(300,200)" filter="url(#shadow)">
-            <rect x="0" y="0" width="120" height="120" rx="16" fill="url(#grad)"/>
-            <!-- Patillas del chip -->
-            <g fill="#1b2a44">
-              <rect x="-12" y="12" width="12" height="16" rx="4"/>
-              <rect x="-12" y="40" width="12" height="16" rx="4"/>
-              <rect x="-12" y="68" width="12" height="16" rx="4"/>
-              <rect x="-12" y="96" width="12" height="16" rx="4"/>
-              <rect x="120" y="12" width="12" height="16" rx="4"/>
-              <rect x="120" y="40" width="12" height="16" rx="4"/>
-              <rect x="120" y="68" width="12" height="16" rx="4"/>
-              <rect x="120" y="96" width="12" height="16" rx="4"/>
-              <rect x="12" y="-12" width="16" height="12" rx="4"/>
-              <rect x="40" y="-12" width="16" height="12" rx="4"/>
-              <rect x="68" y="-12" width="16" height="12" rx="4"/>
-              <rect x="96" y="-12" width="16" height="12" rx="4"/>
-              <rect x="12" y="120" width="16" height="12" rx="4"/>
-              <rect x="40" y="120" width="16" height="12" rx="4"/>
-              <rect x="68" y="120" width="16" height="12" rx="4"/>
-              <rect x="96" y="120" width="16" height="12" rx="4"/>
+  <main>
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="card">
+        <div>
+          <h1>Bienvenido al sitio web de Pablo Llarena</h1>
+          <p class="lead">Ingeniería en sistemas, desarrollo de software y arquitectura de infraestructura. Diseño soluciones robustas con foco en rendimiento, seguridad y automatización.</p>
+          <div class="cta-row">
+            <a href="#proyectos" class="btn primary">Ver proyectos</a>
+            <a href="/cv/PabloLlarena-CV.pdf" class="btn" download>Descargar CV</a>
+            <a href="mailto:contacto@pablollarena.site" class="btn">contacto@pablollarena.site</a>
+          </div>
+        </div>
+        <figure aria-labelledby="caption" style="position:relative">
+          <div class="glow a" aria-hidden="true"></div>
+          <div class="glow b" aria-hidden="true"></div>
+          <!-- Ilustración relacionada a TI -->
+          <svg class="hero-illustration" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-describedby="desc">
+            <title id="desc">Chip y servidores conectados (tecnología de la información)</title>
+            <defs>
+              <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#5cc8ff"/>
+                <stop offset="100%" stop-color="#7860ff"/>
+              </linearGradient>
+              <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
+              </filter>
+            </defs>
+            <rect x="40" y="60" width="640" height="400" rx="22" fill="#0f1a2d" stroke="rgba(255,255,255,0.12)" filter="url(#shadow)" />
+            <g stroke="#2a3a56" stroke-width="6" stroke-linecap="round" opacity="0.8">
+              <path d="M120 180 H360 V130 H600"/>
+              <path d="M120 220 H340 V260 H620"/>
+              <path d="M120 300 H260 V220 H520"/>
+              <path d="M120 340 H220 V360 H520"/>
             </g>
-          </g>
-
-          <!-- Servidores -->
-          <g transform="translate(520,130)" filter="url(#shadow)">
-            <rect x="0" y="0" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <rect x="0" y="84" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <rect x="0" y="168" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="#5cc8ff">
-              <circle cx="22" cy="26" r="5"/>
-              <rect x="40" y="20" width="60" height="8" rx="4"/>
-              <circle cx="22" cy="110" r="5"/>
-              <rect x="40" y="104" width="60" height="8" rx="4"/>
-              <circle cx="22" cy="194" r="5"/>
-              <rect x="40" y="188" width="60" height="8" rx="4"/>
+            <g transform="translate(300,200)" filter="url(#shadow)">
+              <rect x="0" y="0" width="120" height="120" rx="16" fill="url(#grad)"/>
+              <g fill="#1b2a44">
+                <rect x="-12" y="12" width="12" height="16" rx="4"/>
+                <rect x="-12" y="40" width="12" height="16" rx="4"/>
+                <rect x="-12" y="68" width="12" height="16" rx="4"/>
+                <rect x="-12" y="96" width="12" height="16" rx="4"/>
+                <rect x="120" y="12" width="12" height="16" rx="4"/>
+                <rect x="120" y="40" width="12" height="16" rx="4"/>
+                <rect x="120" y="68" width="12" height="16" rx="4"/>
+                <rect x="120" y="96" width="12" height="16" rx="4"/>
+                <rect x="12" y="-12" width="16" height="12" rx="4"/>
+                <rect x="40" y="-12" width="16" height="12" rx="4"/>
+                <rect x="68" y="-12" width="16" height="12" rx="4"/>
+                <rect x="96" y="-12" width="16" height="12" rx="4"/>
+                <rect x="12" y="120" width="16" height="12" rx="4"/>
+                <rect x="40" y="120" width="16" height="12" rx="4"/>
+                <rect x="68" y="120" width="16" height="12" rx="4"/>
+                <rect x="96" y="120" width="16" height="12" rx="4"/>
+              </g>
             </g>
-          </g>
-
-          <!-- Nodos conectados -->
-          <g transform="translate(80,150)" filter="url(#shadow)">
-            <rect x="0" y="0" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <rect x="0" y="120" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <rect x="0" y="240" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
-            <g fill="url(#grad)">
-              <circle cx="35" cy="35" r="10"/>
-              <circle cx="35" cy="155" r="10"/>
-              <circle cx="35" cy="275" r="10"/>
+            <g transform="translate(520,130)" filter="url(#shadow)">
+              <rect x="0" y="0" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <rect x="0" y="84" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <rect x="0" y="168" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <g fill="#5cc8ff">
+                <circle cx="22" cy="26" r="5"/>
+                <rect x="40" y="20" width="60" height="8" rx="4"/>
+                <circle cx="22" cy="110" r="5"/>
+                <rect x="40" y="104" width="60" height="8" rx="4"/>
+                <circle cx="22" cy="194" r="5"/>
+                <rect x="40" y="188" width="60" height="8" rx="4"/>
+              </g>
             </g>
-          </g>
-        </svg>
-        <figcaption id="caption" class="visually-hidden">Chip y servidores representando tecnología de la información.</figcaption>
-      </figure>
-    </main>
-  </div>
+            <g transform="translate(80,150)" filter="url(#shadow)">
+              <rect x="0" y="0" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <rect x="0" y="120" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <rect x="0" y="240" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+              <g fill="url(#grad)">
+                <circle cx="35" cy="35" r="10"/>
+                <circle cx="35" cy="155" r="10"/>
+                <circle cx="35" cy="275" r="10"/>
+              </g>
+            </g>
+          </svg>
+          <figcaption id="caption" class="visually-hidden">Chip y servidores representando tecnología de la información.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- SOBRE MI -->
+    <section id="sobre-mi" class="section">
+      <div class="wrap">
+        <h2>Sobre mí</h2>
+        <p class="muted">Ingeniero en sistemas con experiencia en backend (Symfony, Django), contenedores (Docker), bases de datos (PostgreSQL, MySQL) y despliegues en Linux. Me enfoco en arquitectura limpia, observabilidad y seguridad práctica.</p>
+        <div class="stack" style="margin-top:14px">
+          <span class="chip">Symfony · PHP</span>
+          <span class="chip">Docker · Compose</span>
+          <span class="chip">PostgreSQL · MySQL</span>
+          <span class="chip">API REST · Swagger</span>
+          <span class="chip">CI/CD</span>
+          <span class="chip">Linux · Networking</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section id="habilidades" class="section">
+      <div class="wrap">
+        <h2>Habilidades clave</h2>
+        <div class="grid cols-3">
+          <article class="tile">
+            <h3>Arquitectura & Backend</h3>
+            <p class="muted">APIs con Symfony y Django, patrones BLoC en Flutter, principios SOLID y Clean Architecture.</p>
+          </article>
+          <article class="tile">
+            <h3>DevOps & Automatización</h3>
+            <p class="muted">Docker, orquestación simple, pipelines CI/CD, logging y métricas con herramientas estándar.</p>
+          </article>
+          <article class="tile">
+            <h3>Seguridad Aplicativa</h3>
+            <p class="muted">Endurecimiento de servidores, autenticación robusta, prevención de inyección y prácticas OWASP.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos" class="section">
+      <div class="wrap">
+        <h2>Proyectos seleccionados</h2>
+        <div class="grid cols-3">
+          <article class="tile">
+            <h3>Sistema para Lavanderías</h3>
+            <p class="muted">POS, gestión de órdenes, racks y notificaciones. Backend en Symfony 7, impresión de tickets y etiquetas.</p>
+            <p><a class="btn" href="#" aria-label="Abrir detalle del proyecto 1">Ver detalle</a></p>
+          </article>
+          <article class="tile">
+            <h3>API de Inventarios</h3>
+            <p class="muted">API Platform + Swagger con control de acceso y auditoría, conectada a MySQL externo.</p>
+            <p><a class="btn" href="#" aria-label="Abrir detalle del proyecto 2">Ver detalle</a></p>
+          </article>
+          <article class="tile">
+            <h3>Despliegue en Docker</h3>
+            <p class="muted">Stack reproducible con Nginx/Apache, workers y jobs programados. Logs centralizados.</p>
+            <p><a class="btn" href="#" aria-label="Abrir detalle del proyecto 3">Ver detalle</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="wrap">
+        <h2>Contacto</h2>
+        <div class="grid cols-2">
+          <form class="tile" method="post" action="https://formspree.io/f/tu-endpoint" style="display:grid;gap:10px">
+            <label>Nombre<br><input name="nombre" required class="btn" style="width:100%" placeholder="Tu nombre"/></label>
+            <label>Email<br><input name="email" type="email" required class="btn" style="width:100%" placeholder="tunombre@dominio.com"/></label>
+            <label>Mensaje<br><textarea name="mensaje" rows="5" required class="btn" style="width:100%" placeholder="Cuéntame tu proyecto"></textarea></label>
+            <button class="btn primary" type="submit">Enviar</button>
+            <small class="muted">Al enviar aceptas el uso de tu información para contactarte.</small>
+          </form>
+          <div class="tile">
+            <p class="muted">¿Prefieres correo directo? <a href="mailto:contacto@pablollarena.site">contacto@pablollarena.site</a></p>
+            <p class="muted">Código y artefactos en <a href="https://github.com/tu-usuario" target="_blank" rel="noopener">GitHub</a>. Perfil profesional en <a href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener">LinkedIn</a>.</p>
+            <div class="social" aria-label="Redes sociales">
+              <a class="btn" href="https://github.com/tu-usuario" target="_blank" rel="noopener" aria-label="GitHub">GitHub</a>
+              <a class="btn" href="https://www.linkedin.com/in/tu-perfil" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+              <a class="btn" href="https://wa.me/521234567890" target="_blank" rel="noopener" aria-label="WhatsApp">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <span>© <span id="y"></span> Pablo Llarena — Ingeniería en Sistemas</span>
+      <span class="muted">Hecho con HTML puro y cariño minimalista.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Año dinámico
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
