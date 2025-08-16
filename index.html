@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pablo Llarena | Landing</title>
+  <meta name="description" content="Bienvenido al sitio web de Pablo Llarena" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1220;
+      --fg: #e6edf3;
+      --muted: #9fb0c3;
+      --accent: #5cc8ff;
+      --glass: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:"Inter", system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color:var(--fg);
+      background:
+        radial-gradient(1000px 600px at 80% -10%, rgba(92,200,255,0.15), transparent 60%),
+        radial-gradient(800px 500px at -10% 90%, rgba(120,96,255,0.18), transparent 60%),
+        var(--bg);
+      display:flex;align-items:center;justify-content:center;
+      min-height:100svh;
+    }
+    .wrap{padding:24px;width:min(1080px,100%)}
+    .card{
+      backdrop-filter:saturate(140%) blur(10px);
+      background:var(--glass);
+      border:1px solid var(--border);
+      border-radius:24px;
+      padding:clamp(20px, 4vw, 44px);
+      display:grid;
+      grid-template-columns:1fr;
+      gap:28px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    }
+    @media (min-width:800px){
+      .card{grid-template-columns:1.1fr 1fr;align-items:center}
+    }
+    h1{
+      margin:0 0 10px 0;
+      font-size:clamp(26px, 5vw, 44px);
+      line-height:1.1;
+      letter-spacing:-0.02em;
+    }
+    p{margin:0;color:var(--muted);font-size:clamp(16px, 1.6vw, 18px)}
+    .cta{margin-top:16px;display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--bg);background:var(--accent);padding:12px 18px;border-radius:14px;font-weight:600;border:1px solid rgba(0,0,0,0.06)}
+    .cta:hover{filter:brightness(1.05)}
+
+    .hero-illustration{width:100%;height:auto;max-width:600px;margin-inline:auto;display:block}
+
+    /* Subtle animated glow */
+    .glow{position:absolute;inset:auto;background:radial-gradient(closest-side, rgba(92,200,255,0.18), transparent 70%);filter:blur(20px);width:220px;height:220px;border-radius:999px;animation:float 8s ease-in-out infinite;}
+    .glow.a{top:-40px;left:-40px}
+    .glow.b{bottom:-40px;right:-40px;animation-delay:1.5s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+    .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main">
+      <section>
+        <h1>Bienvenido al sitio web de Pablo Llarena</h1>
+        <p>Desarrollo, infraestructura y esas deliciosas capas de software donde ocurre la magia.
+        </p>
+        <!-- Botón opcional; puedes eliminarlo si no lo necesitas -->
+      </section>
+
+      <!-- Ilustración inline (imagen relacionada a TI) -->
+      <figure aria-labelledby="caption" style="position:relative">
+        <div class="glow a" aria-hidden="true"></div>
+        <div class="glow b" aria-hidden="true"></div>
+        <svg class="hero-illustration" viewBox="0 0 720 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-describedby="desc">
+          <title id="desc">Ilustración de un chip y servidores conectados (tecnología de la información)</title>
+          <defs>
+            <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#5cc8ff"/>
+              <stop offset="100%" stop-color="#7860ff"/>
+            </linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000" flood-opacity="0.35"/>
+            </filter>
+          </defs>
+
+          <!-- Placa base -->
+          <rect x="40" y="60" width="640" height="400" rx="22" fill="#0f1a2d" stroke="rgba(255,255,255,0.12)" filter="url(#shadow)" />
+
+          <!-- Pistas -->
+          <g stroke="#2a3a56" stroke-width="6" stroke-linecap="round" opacity="0.8">
+            <path d="M120 180 H360 V130 H600"/>
+            <path d="M120 220 H340 V260 H620"/>
+            <path d="M120 300 H260 V220 H520"/>
+            <path d="M120 340 H220 V360 H520"/>
+          </g>
+
+          <!-- Chip central -->
+          <g transform="translate(300,200)" filter="url(#shadow)">
+            <rect x="0" y="0" width="120" height="120" rx="16" fill="url(#grad)"/>
+            <!-- Patillas del chip -->
+            <g fill="#1b2a44">
+              <rect x="-12" y="12" width="12" height="16" rx="4"/>
+              <rect x="-12" y="40" width="12" height="16" rx="4"/>
+              <rect x="-12" y="68" width="12" height="16" rx="4"/>
+              <rect x="-12" y="96" width="12" height="16" rx="4"/>
+              <rect x="120" y="12" width="12" height="16" rx="4"/>
+              <rect x="120" y="40" width="12" height="16" rx="4"/>
+              <rect x="120" y="68" width="12" height="16" rx="4"/>
+              <rect x="120" y="96" width="12" height="16" rx="4"/>
+              <rect x="12" y="-12" width="16" height="12" rx="4"/>
+              <rect x="40" y="-12" width="16" height="12" rx="4"/>
+              <rect x="68" y="-12" width="16" height="12" rx="4"/>
+              <rect x="96" y="-12" width="16" height="12" rx="4"/>
+              <rect x="12" y="120" width="16" height="12" rx="4"/>
+              <rect x="40" y="120" width="16" height="12" rx="4"/>
+              <rect x="68" y="120" width="16" height="12" rx="4"/>
+              <rect x="96" y="120" width="16" height="12" rx="4"/>
+            </g>
+          </g>
+
+          <!-- Servidores -->
+          <g transform="translate(520,130)" filter="url(#shadow)">
+            <rect x="0" y="0" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <rect x="0" y="84" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <rect x="0" y="168" width="120" height="70" rx="10" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="#5cc8ff">
+              <circle cx="22" cy="26" r="5"/>
+              <rect x="40" y="20" width="60" height="8" rx="4"/>
+              <circle cx="22" cy="110" r="5"/>
+              <rect x="40" y="104" width="60" height="8" rx="4"/>
+              <circle cx="22" cy="194" r="5"/>
+              <rect x="40" y="188" width="60" height="8" rx="4"/>
+            </g>
+          </g>
+
+          <!-- Nodos conectados -->
+          <g transform="translate(80,150)" filter="url(#shadow)">
+            <rect x="0" y="0" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <rect x="0" y="120" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <rect x="0" y="240" width="70" height="70" rx="12" fill="#132036" stroke="rgba(255,255,255,0.1)"/>
+            <g fill="url(#grad)">
+              <circle cx="35" cy="35" r="10"/>
+              <circle cx="35" cy="155" r="10"/>
+              <circle cx="35" cy="275" r="10"/>
+            </g>
+          </g>
+        </svg>
+        <figcaption id="caption" class="visually-hidden">Chip y servidores representando tecnología de la información.</figcaption>
+      </figure>
+    </main>
+  </div>
+</body>
+</html>
